@@ -11,19 +11,57 @@ class HomeViewController: UIViewController {
     
     private let homeFeedTable: UITableView = {
         let table = UITableView()
-        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        table.register(CollectionViewTableViewCell.self, forCellReuseIdentifier: CollectionViewTableViewCell.identifier)
         return table
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(homeFeedTable)
+
         
         homeFeedTable.delegate = self
         homeFeedTable.dataSource = self
         
-        homeFeedTable.tableFooterView = UIView(frame:   CGRect(x: 0, y: 0, width: view.bounds.width, height: 450))
+        configureNavbar()
+        
+        let headerview = HeroHeaderUIView(frame:    CGRect(x: 0, y: 0, width: view.bounds.width, height: 450))
+        homeFeedTable.tableHeaderView = headerview
     }
+    
+    private func configureNavbar() {
+        let logoImage = UIImage(named: "netflixLogo")?.withRenderingMode(.alwaysOriginal)
+        let logoButton = UIButton(type: .custom)
+        logoButton.setImage(logoImage, for: .normal)
+        logoButton.frame = CGRect(x: 0, y: 0, width: 28, height: 28) // adjust size
+        logoButton.imageView?.contentMode = .scaleAspectFit
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: logoButton)
+
+        let personButton = UIButton(type: .system)
+        personButton.setImage(UIImage(systemName: "person"), for: .normal)
+        personButton.tintColor = .white
+ 
+
+        let playButton = UIButton(type: .system)
+        playButton.setImage(UIImage(systemName: "play.rectangle"), for: .normal)
+        playButton.tintColor = .white
+      
+        navigationItem.rightBarButtonItems = [
+            UIBarButtonItem(customView: personButton),
+            UIBarButtonItem(customView: playButton)
+        ]
+    }
+    
+    
+//    private let downloadButton: UIButton = {
+//        let button = UIButton()
+//        button.setTitle("Download" , for: .normal)
+//        button.layer.borderColor = UIColor.white.cgColor
+//        button.layer.borderWidth = 1
+//        button.translatesAutoresizingMaskIntoConstraints = false
+//        button.layer.cornerRadius = 5
+//        return button
+//    }()
  
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
