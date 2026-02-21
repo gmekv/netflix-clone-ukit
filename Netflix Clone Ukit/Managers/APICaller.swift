@@ -42,6 +42,12 @@ class APICaller {
 
         task.resume()
     }
+    
+    func search(with query: String, completion: @escaping (Result<[Title], Error>) -> Void ) {
+        guard let query = query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {return}
+        let urlString = "\(Constants.baseURL)/trending/all/day?api_key=\(Constants.API_KEY)&query=\(query)"
+        fetchData(from: urlString, completion: completion)
+    }
 
     func getTrendingTVs(completion: @escaping (Result<[Title], Error>) -> Void) {
         let urlString = "\(Constants.baseURL)/trending/tv/day?api_key=\(Constants.API_KEY)"
