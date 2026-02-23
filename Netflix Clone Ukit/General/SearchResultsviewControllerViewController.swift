@@ -6,9 +6,9 @@ import UIKit
 
 class SearchResultsViewController: UIViewController {
     
-    private let titles: [Title] = [Title]()
+    public var titles: [Title] = [Title]()
     
-    private let searchResultsCollectionView: UICollectionView = {
+    public let searchResultsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: UIScreen.main.bounds.width / 3 - 10, height: 200)
         layout.minimumLineSpacing = 0
