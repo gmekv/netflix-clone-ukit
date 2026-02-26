@@ -46,8 +46,8 @@ class APICaller {
     }
     
     func search(with query: String, completion: @escaping (Result<[Title], Error>) -> Void ) {
-        guard let query = query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {return}
-        let urlString = "\(Constants.baseURL)/trending/all/day?api_key=\(Constants.API_KEY)&query=\(query)"
+        guard let query = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
+        let urlString = "\(Constants.baseURL)/search/movie?api_key=\(Constants.API_KEY)&query=\(query)"
         fetchData(from: urlString, completion: completion)
     }
 
