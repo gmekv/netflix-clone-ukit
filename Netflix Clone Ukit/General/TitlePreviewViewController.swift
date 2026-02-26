@@ -84,7 +84,7 @@ class TitlePreviewViewController: UIViewController {
             webView.topAnchor.constraint(equalTo: containerView.topAnchor),
             webView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             webView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-            webView.heightAnchor.constraint(equalToConstant: 250),
+            webView.heightAnchor.constraint(equalToConstant: 300),
         ]
         
         let titleLabelConstraints = [

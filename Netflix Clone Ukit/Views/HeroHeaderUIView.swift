@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class HeroHeaderUIView: UIView {
     
@@ -33,7 +34,6 @@ class HeroHeaderUIView: UIView {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.image = UIImage(named: "heroImage")
         return imageView
     }()
     
@@ -70,6 +70,16 @@ class HeroHeaderUIView: UIView {
         gradientLayer.colors = [UIColor.clear.cgColor, UIColor.black.withAlphaComponent(0.3).cgColor, UIColor.black.cgColor]
         gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
         layer.addSublayer(gradientLayer)
+    }
+    
+    public func configure(with model: TitleViewModel) {
+        
+        guard let url = URL(string: "https://image.tmdb.org/t/p/w500\(model.posterURL)") else {
+            return
+        }
+        
+        heroImageView.sd_setImage(with: url, completed: nil)
+        
     }
     
     override func layoutSubviews() {
