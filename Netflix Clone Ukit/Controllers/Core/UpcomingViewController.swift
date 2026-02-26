@@ -75,13 +75,13 @@ extension UpcomingViewController: UITableViewDelegate, UITableViewDataSource {
         
         guard let titlName = title.originalTitle ?? title.originalName else { return }
 
-            APICaller.shared.getMovie(with: titlName) { result in
+            APICaller.shared.getMovie(with: titlName) { [weak self] result in
                 switch result {
                 case .success(let videoElement):
                     DispatchQueue.main.async {
                         let vc = TitlePreviewViewController()
-                        vc.configure(with: TitlePreviewViewModel(title: titlName, youtibeView: videoElement, titleOverView: title.overview))
-                        self.navigationController?.pushViewController(vc, animated: true)
+                        vc.configure(with: TitlePreviewViewModel(title: titlName, youtubeView: videoElement, titleOverView: title.overview))
+                        self?.navigationController?.pushViewController(vc, animated: true)
                     }
                 case .failure(let error):
                     print(error.localizedDescription)

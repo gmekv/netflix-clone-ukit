@@ -94,7 +94,7 @@ extension CollectionViewTableViewCell: UICollectionViewDelegate, UICollectionVie
                      return
                  }
                  
-                 let viewModel = TitlePreviewViewModel(title: titleName, youtibeView: videoElement , titleOverView: titleOverview)
+                 let viewModel = TitlePreviewViewModel(title: titleName, youtubeView: videoElement , titleOverView: titleOverview)
                  
                  self?.delegate?.collectionViewTableCellDidTapCell(strongSelf, viewModel: viewModel)
                  
