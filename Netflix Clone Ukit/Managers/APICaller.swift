@@ -86,7 +86,7 @@ class APICaller {
 
         print("[YouTube] encoded query:", query)
 
-        let urlString = "\(Constants.YoutubeBaseURL)/search?part=snippet&q=\(query)&key=\(Constants.YoutubeAPI_Key)&type=video&maxResults=5"
+        let urlString = "\(Constants.YoutubeBaseURL)/search?part=snippet&q=\(query)&key=\(Constants.YoutubeAPI_Key)&type=video&videoEmbeddable=true&maxResults=5"
         print("[YouTube] request URL:", urlString)
 
         guard let url = URL(string: urlString) else {
